@@ -23,7 +23,6 @@ with open('wikibig.text', 'r') as f:
 
 	plt.figure('words')
 	plt.bar(top_words['key'], top_words['values'])
-	plt.show()
 	
 data = pd.read_csv('forestfires.csv')
 #создание словарей
