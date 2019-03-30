@@ -15,7 +15,16 @@ with open('wikibig.text', 'r') as f:
     dict_word_counts = {i: data_text_word.count(i) for i in list(set(data_text_word))}
     for i in dict_word_counts:
         print("%s" % (i.ljust(19)), dict_word_counts[i]) #ljust(n) - левоориентированный вывод n знаков
+	data = pd.DataFrame()
+	data['values'] = dict_word_counts.values()
+	data['key'] = dict_word_counts.keys()
+	data = data.sort_values(by = 'values',ascending=False)
+	top_words = data[:10]
 
+	plt.figure('words')
+	plt.bar(top_words['key'], top_words['values'])
+	plt.show()
+	
 data = pd.read_csv('forestfires.csv')
 #создание словарей
 month_name = {month: i for i, month in enumerate(['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'])}
